@@ -10,3 +10,4 @@ router.put('/data/:cpf', clienteController.updateCliente);
 router.delete('/data/:cpf', clienteController.deleteCliente);
 
 module.exports = router;
+
