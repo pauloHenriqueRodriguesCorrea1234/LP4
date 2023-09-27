@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Usuários</title>
+    <a href="salvar.html">Salvar Usuário</a>
+    <a href="atualizar.html">Atualizar Usuários</a>
+    <style>
+        a {
+            float: right;
+            display: block;
+            width: 10%;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            /* um espaço entre outro botão */
+            
+        }
+        /* Mudar o estilo do botão do link atualizar */
+        a:nth-child(2) { /* 2 é o segundo botão */
+            float: right;
+            display: block;
+            width: 10%;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #415314;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+       
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffebcd;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        /* botão de deletar */
+
+        button {
+            /* float: right; */
+            display: block;
+            width: 30%;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #dc3545;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #5d1515;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Listagem de Clientes</h1>
+    <table>
+        <thead>
+            <tr>
+                
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Ações</th> <!-- Coluna para o botão de deletar -->
+            </tr>
+        </thead>
+        <tbody id="clientes">
+            <!-- Os registros serão preenchidos dinamicamente aqui usando JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Use JavaScript para buscar e exibir os registros dinamicamente.
+        fetch('/api/data') // Buscar registros
+            .then(response => response.json()) // Transformar a resposta em JSON
+            .then(data => { // Pegar os dados
+                const clientesDiv = document.getElementById('clientes'); // Pegar a div onde os registros serão exibidos
+                data.forEach(cliente => { // Para cada registro, crie uma linha na tabela
+                    const tr = document.createElement('tr'); // Criar uma linha
+                    tr.innerHTML = ` <!-- Preencher a linha com os dados do registro -->
+                        <td>${cliente.nome}</td>
+                        <td>${cliente.telefone}</td>
+                        <td>${cliente.email}</td>
+                        <td>${cliente.cpf}</td>
+                        <td><button class="delete-button" data-cpf="${cliente.cpf}">Deletar</button></td> <!-- Botão de deletar -->
+                    `;
+                    clientesDiv.appendChild(tr); // Adicionar a linha na tabela
+                });
+
+                // Adicione um evento de clique a cada botão de deletar
+                document.querySelectorAll('.delete-button').forEach(button => { // Para cada botão de deletar
+                    button.addEventListener('click', function() { // Adicione um evento de clique
+                        const cpf = this.getAttribute('data-cpf'); // Pegar o ID do registro
+                        fetch(`/api/data/${cpf}`, { // Deletar o registro
+                            method: 'DELETE', // Método DELETE
+                        }) // Transformar a resposta em JSON
+                        .then(response => response.json()) // Pegar os dados
+                        .then(data => { // Exibir uma mensagem de sucesso
+                            alert(`Cliente deletado com sucesso: ${data.nome}`); // Exibir uma mensagem de sucesso
+                            window.location.reload();  // Recarregar a página
+                        });
+                    });
+                });
+            })
+            .catch(error => console.error('Erro ao buscar registros:', error)); // Exibir erros no console
+    </script>
+</body>
+
+</html>
