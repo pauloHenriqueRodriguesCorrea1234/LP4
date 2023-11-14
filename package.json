@@ -1,12 +1,12 @@
 {
-  "name": "salao-lp4",
+  "name": "3-mvc",
   "version": "1.0.0",
   "description": "",
-  "main": "./app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "julia,natalia,lara",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",

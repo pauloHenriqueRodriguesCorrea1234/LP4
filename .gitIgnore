@@ -1,3 +1,1 @@
-# Para não enviar a pasta node_modules para o Github
-node_modules/ 
-
+node_modules/

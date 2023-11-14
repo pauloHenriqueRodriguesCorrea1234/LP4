@@ -1,15 +1,25 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const express = require("express");
+const mongoose = require("mongoose");
 
-const routes = require('./routes'); // Importa as rotas do arquivo routes.js
+const port = ENV.apiPort;
+const baseURL = ENV.baseURL;
 
-app.use(express.json());
-app.use('/api', routes); // Define o prefixo /api para as rotas
+const api = express();
 
-app.use(express.static('view')); // Define a pasta view como pública
+mongoose.connect(baseURL);
 
+mongoose.connection.on("error", (error) => {
+  console.log("[ERROR]: conexão co DB" + error);
+});
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+mongoose.connection.on("desconected", () => {
+  console.log("[AVISO]: aplicação desconectada com DB");
+});
+
+mongoose.connection.on("error", () => {
+  console.log("[AVISO]: aplicação conectada com DB" + error);
+});
+
+api.listen(port, () => {
+  console.log(`Servidor rodadando na porta ${port}`);
 });

@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Início da estilização da página de Atualizar e Salvar usuário */
+#conteiner {
+  font-family: Arial, sans-serif;
+  background: url(../img/bg.jpg) no-repeat;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+}
+
+#title {
+  color: #1c0054;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#conteiner_link {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+#link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  color: #fff;
+  background-color: #1c0054;
+
+  width: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+}
+
+#conteiner_form {
+  display: flex;
+  justify-content: center;
+}
+
+#usuarioForm {
+  margin-top: 10px;
+}
+.label {
+  color: #1c0054;
+}
+
+.input {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+}
+#button {
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #1c0054;
+  border-radius: 5px;
+  width: 100px;
+}
+/* Fim da estilização da página de Atualizar e Salvar usuário */
+
+/* Início da estilização da página de Listar usuário */
+#conteiner_listar {
+  font-family: Arial, sans-serif;
+}
+/* Fim da estilização da página de Listar usuário */
+
+#table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.link_header_listar {
+  float: right;
+  display: block;
+  width: 10%;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  /* um espaço entre outro botão */
+}
+
+/* Mudar o estilo do botão do link atualizar */
+.link_header_listar:nth-child(2) {
+  /* 2 é o segundo botão */
+  float: right;
+  display: block;
+  width: 10%;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #415314;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.delete-button {
+  /* float: right; */
+  display: block;
+  width: 30%;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #dc3545;
+  border-radius: 5px;
+}
